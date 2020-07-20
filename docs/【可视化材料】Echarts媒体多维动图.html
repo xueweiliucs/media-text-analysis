@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+<div id="container" style="height: 100%"></div>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script> -->
+<!-- <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script> -->
+<script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+myChart.showLoading();
+myChart.hideLoading();
+data1={'counties': ['卫报', '华尔街日报', '金融时报', '纽约时报'], 'timeline': [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018], 'series': [[[0.335412328896702, 0.122518824633513, 10, '纽约时报', 2005], [0.389850683366812, 0.06394047372878, 5, '金融时报', 2005], [0.471875, 0.034375, 2, '卫报', 2005]], [[0.41373743314766, 0.144473500867819, 10, '纽约时报', 2006], [0.32442063256703, 0.068980366863643, 13, '金融时报', 2006], [0.35483166066163, 0.037788364456455, 5, '卫报', 2006]], [[0.364320968383468, 0.042666962666963, 12, '纽约时报', 2007], [0.402050366548134, 0.134102617372707, 8, '金融时报', 2007], [0.431180502335176, 0.083277967893265, 10, '卫报', 2007]], [[0.362228714501674, 0.124046741186683, 35, '纽约时报', 2008], [0.401023996744692, 0.086308183099876, 16, '金融时报', 2008], [0.396552560438965, 0.073055698525287, 7, '卫报', 2008]], [[0.327406991595715, 0.07905826151656, 27, '纽约时报', 2009], [0.349895991140815, 0.064753411474824, 18, '金融时报', 2009], [0.259662337662338, 0.047183211424591, 5, '卫报', 2009]], [[0.384920944767175, 0.136784607650822, 37, '纽约时报', 2010], [0.298001443001443, 0.124815115440115, 6, '华尔街日报', 2010], [0.335399104308555, 0.073865833344071, 29, '金融时报', 2010], [0.370059523809524, 0.023691798941799, 5, '卫报', 2010]], [[0.324171005752125, 0.083381767446303, 48, '纽约时报', 2011], [0.232509157509157, -0.020833333333333, 3, '华尔街日报', 2011], [0.349291514943436, 0.050793320071417, 18, '金融时报', 2011], [0.42674495155638, 0.058215908747337, 5, '卫报', 2011]], [[0.314788854974278, 0.074183528285884, 24, '纽约时报', 2012], [0.359700665410252, 0.025769952745632, 16, '金融时报', 2012], [0.4, 0.105555555555556, 1, '卫报', 2012]], [[0.388324735449735, 0.167208633958634, 10, '纽约时报', 2013], [0.213785288785289, 0.021985884485885, 3, '华尔街日报', 2013], [0.392076369190918, -0.010258176549468, 15, '金融时报', 2013], [0.489722222222222, 0.122777777777778, 2, '卫报', 2013]], [[0.364449977264185, 0.085418526628283, 12, '纽约时报', 2014], [0.2, 0.2, 1, '华尔街日报', 2014], [0.378393543488379, 0.072813388944216, 28, '金融时报', 2014], [0.461126033057851, -0.05413567493113, 2, '卫报', 2014]], [[0.383251365961187, 0.074192316228557, 9, '纽约时报', 2015], [0.374917291568603, 0.070938583567568, 18, '华尔街日报', 2015], [0.335224306241402, 0.091124372427786, 8, '金融时报', 2015], [0.371205357142857, 0.165528048340548, 3, '卫报', 2015]], [[0.312960330011036, 0.066914921136781, 17, '纽约时报', 2016], [0.380828901742757, 0.074112892141686, 63, '华尔街日报', 2016], [0.365261012156693, 0.071017114582496, 35, '金融时报', 2016], [0.382307511320866, 0.06260224020799, 15, '卫报', 2016]], [[0.3114549537042, 0.083585271386073, 47, '纽约时报', 2017], [0.380556266418476, 0.095095231085757, 48, '华尔街日报', 2017], [0.366821895664683, 0.086813482907575, 63, '金融时报', 2017], [0.391762900445581, 0.09871141964148, 10, '卫报', 2017]], [[0.299722411827826, 0.058750994446524, 61, '纽约时报', 2018], [0.37842514071292, 0.097322576511256, 45, '华尔街日报', 2018], [0.383685445835634, 0.084584366234835, 86, '金融时报', 2018], [0.438079093079111, 0.067383234073262, 5, '卫报', 2018]]]}
+
+
+
+var itemStyle = {
+normal: {
+    opacity: 1,
+    shadowBlur: 5,
+    shadowOffsetX: 10,
+    shadowOffsetY: 0,
+    shadowColor: 'rgba(0, 0, 0, 0.5)'
+}
+};
+
+var sizeFunction = function (x) {
+var y = x/85;
+y = y*150;
+y = y+10;
+
+return y;
+
+
+
+};
+// Schema:
+var schema = [
+{name: 'Income', index: 0, text: '主观度', unit: ''},
+{name: 'LifeExpectancy', index: 1, text: '情感数', unit: ''},
+{name: 'Population', index: 2, text: '报道条数', unit: ''},
+{name: 'Country', index: 3, text: '媒体', unit: ''}
+];
+
+option = {
+baseOption: {
+    timeline: {
+        axisType: 'category',
+        orient: 'vertical',
+        autoPlay: true,
+        inverse: true,
+        playInterval: 800,
+        left: null,
+        right: 0,
+        top: 20,
+        bottom: 20,
+        width: 55,
+        height: null,
+        label: {
+            normal: {
+                textStyle: {
+                    color: '#999'
+                }
+            },
+            emphasis: {
+                textStyle: {
+                    color: '#fff'
+                }
+            }
+        },
+        symbol: 'none',
+        lineStyle: {
+            color: '#555'
+        },
+        checkpointStyle: {
+            color: '#bbb',
+            borderColor: '#777',
+            borderWidth: 2
+        },
+        controlStyle: {
+            showNextBtn: false,
+            showPrevBtn: false,
+            normal: {
+                color: '#666',
+                borderColor: '#666'
+            },
+            emphasis: {
+                color: '#aaa',
+                borderColor: '#aaa'
+            }
+        },
+        data: []
+    },
+    backgroundColor: '#404a59',
+    title: [{
+        text: data1.timeline[0],
+        textAlign: 'center',
+        left: '63%',
+        top: '55%',
+        textStyle: {
+            fontSize: 100,
+            color: 'rgba(255, 255, 255, 0.7)'
+        }
+    }, {
+        text: '不同媒体眼中的国家形象',
+        left: 'center',
+        top: 10,
+        textStyle: {
+            color: '#aaa',
+            fontWeight: 'normal',
+            fontSize: 20
+        }
+    }],
+    tooltip: {
+        padding: 5,
+        backgroundColor: '#222',
+        borderColor: '#777',
+        borderWidth: 1,
+        formatter: function (obj) {
+            var value = obj.value;
+            return schema[3].text + '：' + value[3] + '<br>'
+                    + schema[1].text + '：' + value[1] + schema[1].unit + '<br>'
+                    + schema[0].text + '：' + value[0] + schema[0].unit + '<br>'
+                    + schema[2].text + '：' + value[2] + '<br>';
+        }
+    },
+    grid: {
+        top: 100,
+        containLabel: true,
+        left: 30,
+        right: '110'
+    },
+    xAxis: {
+
+        name: '主观度',
+        max: 0.7,
+        min: 0,
+        nameGap: 0,
+        nameLocation: 'middle',
+        nameTextStyle: {
+            fontSize: 18
+        },
+        splitLine: {
+            show: false
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#ccc'
+            }
+        },
+        axisLabel: {
+            formatter: '{value} '
+        }
+    },
+    yAxis: {
+        type: 'value',
+        name: '情感数',
+        max: 0.2,
+        min:-0.05,
+        nameTextStyle: {
+            color: '#ccc',
+            fontSize: 18
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#ccc'
+            }
+        },
+        splitLine: {
+            show: false
+        },
+        axisLabel: {
+            formatter: '{value} '
+        }
+    },
+    visualMap: [
+        {
+            show: true,
+            dimension: 3,
+            categories: data1.counties,
+            calculable: true,
+            precision: 0.1,
+            textGap: 30,
+            orient:'horizontal',
+            textStyle: {
+                color: '#ccc'
+            },
+            inRange: {
+                color: (function () {
+                    var colors = ['#bcd3bb', '#e88f70', '#edc1a5', '#9dc5c8', '#e1e8c8', '#7b7c68', '#e5b5b5', '#f0b489', '#928ea8', '#bda29a'];
+                    return colors.concat(colors);
+                })()
+            }
+        }
+    ],
+    series: [
+        {
+            type: 'scatter',
+            itemStyle: itemStyle,
+            data: data1.series[0],
+            symbolSize: function(val) {
+                return sizeFunction(val[2]);
+            }
+        }
+    ],
+    animationDurationUpdate: 1000,
+    animationEasingUpdate: 'quinticInOut'
+},
+options: []
+};
+
+for (var n = 0; n < data1.timeline.length; n++) {
+option.baseOption.timeline.data.push(data1.timeline[n]);
+option.options.push({
+    title: {
+        show: true,
+        'text': data1.timeline[n] + ''
+    },
+    series: {
+        name: data1.timeline[n],
+        type: 'scatter',
+        itemStyle: itemStyle,
+        data: data1.series[n],
+        symbolSize: function(val) {
+            return sizeFunction(val[2]);
+        }
+    }
+});
+}
+
+myChart.setOption(option);
+
+
+       </script>
+   </body>
+</html>
